@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Malibu Roleplay • Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;500;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+
+<style>
+.banner{
+  margin-bottom: 14px;
+  padding: 0;
+  overflow: hidden;
+  min-height: 320px;
+  background:
+    radial-gradient(900px 220px at 20% 20%, rgba(176,38,255,.20), transparent 55%),
+    radial-gradient(700px 240px at 80% 30%, rgba(124,92,255,.18), transparent 55%),
+    url("./assets/banner.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 22px;
+  position: relative;
+}
+
+.banner-overlay{
+  position:absolute;
+  inset:0;
+  padding: 32px;
+  display:flex;
+  justify-content:space-between;
+  align-items:stretch;
+  background: transparent;
+}
+
+.banner-left{
+  display:flex;
+  align-items:flex-start;
+}
+
+.banner-right{
+  display:flex;
+  align-items:flex-end;
+}
+
+
+  }
+</style>
+
+</head>
+<body>
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">M</div>
+      <div class="brand-text">
+        <div class="title">MALIBU ROLEPLAY</div>
+      </div>
+    </div>
+
+    <button class="hamburger" id="navToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="mainNav">
+      <button class="nav-btn active" data-page="home">Página Inicial</button>
+      <button class="nav-btn" data-page="store">Loja</button>
+      <button class="nav-btn" data-page="rules">Regras</button>
+      <button class="nav-btn" data-page="team">Equipe</button>
+      <button class="nav-btn cart-btn" data-page="checkout">
+        Carrinho <span class="pill" id="cartCount">0</span>
+      </button>
+      <button class="nav-btn" id="btnLogin">Login com Discord</button>
+
+      <div id="userBox" class="userbox" style="display:none">
+        <img id="avatar" class="userbox-avatar" alt="Avatar do Discord" />
+        <div class="userbox-meta">
+          <div class="userbox-row">
+            <span id="username" class="userbox-name"></span>
+            <span id="badgeDiscord" class="discord-badge">Logado com Discord</span>
+          </div>
+          <button class="btn ghost" id="btnLogout" type="button">Sair</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+  <main class="container">
+    <section class="page show" id="page-home">
+      <div class="banner card">
+        <div class="banner-overlay">
+          <div class="banner-left">
+            <div class="banner-kicker">MALIBU ROLEPLAY</div>
+          </div>
+          <div class="banner-right">
+            <button class="btn primary" id="btnBannerStore">Loja</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero card">
+        <div class="hero-left">
+          <h1>Bem-vindo ao <span class="neon">MALIBU ROLEPLAY</span></h1>
+          <p class="muted">
+            Um servidor feito para imersão, economia equilibrada e experiência estável .
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#" id="btnGoStore">Ver Loja</a>
+            <a class="btn ghost" href="#" id="btnCopyIP">Copiar Connect</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-num">+120</div>
+              <div class="stat-label">Players online</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">24/7</div>
+              <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">Anti-Cheat</div>
+              <div class="stat-label">Proteção</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="poster">
+            <div class="poster-top">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="poster-title">DASHBOARD</span>
+            </div>
+            <div class="poster-body">
+              <div class="tag">• Economia balanceada</div>
+              <div class="tag">• Staff ativa</div>
+              <div class="tag">• RP + PVP</div>
+              <div class="tag">• Eventos semanais</div>
+              <div class="divider"></div>
+              <div class="muted small">Dica: conecte via F8:</div>
+              <code class="codebox">connect (IP ainda não definido)</code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card feature">
+          <h3>Concessionária</h3>
+          <p class="muted">Concessionária com deversos carros e motos, basta escolher o seu!</p>
+        </div>
+        <div class="card feature">
+          <h3>Mercado Pago</h3>
+          <p class="muted">PIX + cartão/débito/crédito (checkout do MP).</p>
+        </div>
+        <div class="card feature">
+          <h3>Entrega manual</h3>
+          <p class="muted">Após pagar, abra ticket no Discord com e-mail + item comprado.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="page-store">
+      <div class="card header-row">
+        <div>
+          <h2>Loja</h2>
+          <p class="muted">Adicione itens e pague com Mercado Pago.</p>
+        </div>
+        <div class="search">
+          <input id="searchInput" placeholder="Buscar produto..." />
+        </div>
+      </div>
+
+      <div class="tabs" id="categoryTabs"></div>
+
+      <div class="products" id="products"></div>
+    </section>
+
+    <section class="page" id="page-rules">
+      <div class="card">
+        <h2>Regras do Servidor</h2>
+        <p class="muted">RP + PVP (com limites). Adapte conforme o seu servidor.</p>
+
+        <style>
+  /* Regras em categorias (abas) - mantém o tema do site */
+  #page-rules .rules-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 16px}
+  #page-rules .rules-panel{display:none}
+  #page-rules .rules-panel.show{display:block}
+  #page-rules .rules-tabs .btn.ghost.active{filter:brightness(1.25)}
+</style>
+
+<div class="rules-tabs" id="rulesTabs">
+  <button class="btn ghost active" type="button" data-tab="tab-regras-gerais">REGRAS GERAIS</button>
+  <button class="btn ghost" type="button" data-tab="tab-linguagem-e-comportamento">LINGUAGEM E COMPORTAMENTO</button>
+  <button class="btn ghost" type="button" data-tab="tab-areas-e-locais">ÁREAS E LOCAIS</button>
+  <button class="btn ghost" type="button" data-tab="tab-regras-de-personagens">REGRAS DE PERSONAGENS</button>
+  <button class="btn ghost" type="button" data-tab="tab-regras-de-faccao">REGRAS DE FACÇÃO</button>
+  <button class="btn ghost" type="button" data-tab="tab-regras-de-corporacao">REGRAS DE CORPORAÇÃO</button>
+  <button class="btn ghost" type="button" data-tab="tab-armas-e-combate">ARMAS E COMBATE</button>
+  <button class="btn ghost" type="button" data-tab="tab-streamers">STREAMERS</button>
+  <button class="btn ghost" type="button" data-tab="tab-teclas-e-comandos">TECLAS E COMANDOS</button>
+</div>
+
+<div class="rules-content">
+  <div class="rules-panel show" id="tab-regras-gerais">
+<div class="rules">
+  <div class="rule">
+    <h4>ROLEPLAY (RP)</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um jogador interpreta um policial que está patrulhando a cidade, abordando motoristas e cumprindo a lei. Ele age de forma realista, verificando documentos e agindo conforme as leis da cidade, como se fosse um verdadeiro policial.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>AMOR À VIDA (LTA)</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um personagem está em uma situação de confronto com facções rivais. Ele escolhe fugir em vez de continuar a luta, priorizando a sua sobrevivência, em vez de se expor a risco de morte.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>METAGAMING (MG)</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um jogador vê um stream onde outro jogador menciona que está carregando um contrabando em seu veículo. Ele usa essa informação para interceptar o jogador no roleplay. Isso é metagaming e é proibido.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>VEÍCULO DEATHMATCH (VDM)</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um jogador decide atropelar outro personagem com seu veículo, sem qualquer justificativa ou contexto de roleplay. Isso é considerado VDM e será punido.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>RANDOM DEATHMATCH (RDM)</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um jogador mata outro sem qualquer motivo dentro da narrativa do roleplay, como uma vingança pessoal ou desentendimento prévio. Isso é RDM e resulta em penalidades.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>COMBAT LOGGING (CL)</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Durante um tiroteio, um jogador sai do servidor para evitar ser preso ou perder a luta. Isso é Combat Logging (CL), o que é contra as regras e resultará em penalidades.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>POWERGAMING (PG)</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um jogador tenta matar outro personagem com um golpe fatal sem que haja qualquer chance realista de realizar tal ação, usando uma mecânica do jogo para garantir a vitória, como uma combinação de teclas ou um bug. Isso é powergaming e deve ser evitado.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>PERDA DE PERSONAGEM DEFINITIVA (P.D)</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um jogador repetidamente quebra regras como Combat Logging ou Metagaming. Após várias infrações graves, ele perde sua conta e todos os benefícios do jogo devido à Perda de Personagem Definitiva.</li>
+</ul>
+  </div>
+</div>
+  </div>
+  <div class="rules-panel" id="tab-linguagem-e-comportamento">
+<div class="rules">
+  <div class="rule">
+    <h4>LINGUAGEM OFENSIVA (FLAMING)</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Durante uma interação, um jogador começa a xingar outro jogador com palavras de ódio, como "você é um inútil" ou usa termos racistas. Isso configura flaming e resulta em penalizações.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>ROLEPLAY SOMBRIO (DARK RP)</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um jogador começa a interpretar um personagem que realiza atos extremamente violentos ou de tortura, como mutilação, abuso sexual ou suicídio. Esse tipo de comportamento é dark RP e não é permitido no servidor.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>AÇÃO DE DESOVA RP</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Após um tiroteio, um jogador mata outro e desova o corpo no meio da rua, deixando-o exposto sem respeito. Isso viola a regra de desova RP, que exige um tratamento coerente e respeitoso ao corpo do personagem.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>FORÇAR RP</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um jogador força outro a realizar uma ação sem justificativa no roleplay, como obrigar um civil a ajudar a roubar um banco sem contexto. Isso quebra a imersão e é considerado Force RP.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>USO DE VOIP</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um jogador está com o microfone estourado ou tocando música em um local público, atrapalhando a interação dos outros. Isso configura violação do uso adequado do VOIP.</li>
+</ul>
+  </div>
+</div>
+  </div>
+  <div class="rules-panel" id="tab-areas-e-locais">
+<div class="rules">
+  <div class="rule">
+    <h4>SAFEZONE</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um jogador entra na Prefeitura e começa a atirar em outros jogadores, o que é proibido porque a Prefeitura é uma safezone. Nessas áreas, não é permitido cometer crimes, como matar ou roubar.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>ÁREAS NEUTRAS</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Dois grupos de facções rivais se encontram em um posto de gasolina (área neutra). Eles podem discutir ou fazer negócios, mas não devem iniciar ações hostis como tiroteios ou agressões.</li>
+</ul>
+  </div>
+</div>
+  </div>
+  <div class="rules-panel" id="tab-regras-de-personagens">
+<div class="rules">
+  <div class="rule">
+    <h4>NICKGAME</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um jogador escolhe o nickname "MACACO_123", "TADURO_123" ou qualquer nickname com duplo sentido. Isso não é permitido. O nome deve ser apropriado ao roleplay, como "Carlos_Silva" ou "Pedro_Bala".</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>RELEMBRAR AÇÃO</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um jogador é derrubado durante uma luta e desmaia. Ao acordar, ele pode lembrar que se machucou, mas não pode lembrar quem causou a lesão para buscar vingança diretamente.</li>
+</ul>
+  </div>
+</div>
+  </div>
+  <div class="rules-panel" id="tab-armas-e-combate">
+<div class="rules">
+  <div class="rule">
+    <h4>ARMAS ILEGAIS</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um civil carrega uma pistola sem justificativa no roleplay. Quando abordado, ele é punido por portar arma ilegal; armas pesadas devem seguir as regras do servidor.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>REGRAS DE RENDIÇÃO</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Durante uma troca de tiros, um jogador que não está envolvido se abaixa/usa animação de proteção para sinalizar rendição e não participação. Esse é um exemplo correto de rendição.</li>
+</ul>
+  </div>
+</div>
+  </div>
+  <div class="rules-panel" id="tab-streamers">
+<div class="rules">
+  <div class="rule">
+    <h4>CRIADORES DE CONTEÚDO</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Um streamer incita pessoas a violarem regras (metagaming/trolling). Ele pode ser penalizado, pois criadores de conteúdo devem seguir as regras e suas ações podem ser monitoradas durante transmissões.</li>
+</ul>
+  </div>
+</div>
+  </div>
+  <div class="rules-panel" id="tab-regras-de-faccao">
+<div class="rules">
+  <div class="rule">
+    <h4>NICKNAMES DE FACÇÕES</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Devem ter nicknames que sigam o padrão de roleplay, podendo incluir tags secundárias.</li>
+<li>FAC|Nick (uso permitido de maiúsculas e minúsculas)</li>
+<li>FAC|CARGO|Nick (uso permitido de maiúsculas e minúsculas)</li>
+<li>FAC|NICK (uso permitido de maiúsculas e minúsculas)</li>
+<li>EMPREGO|FAC|Nick (exemplo: advogado)</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>INTERAÇÃO COM CIVIS</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Facções podem interagir com civis em combate, assaltos, sequestros e outras ações ilegais.</li>
+<li>Não devem usar ações extremas sem justificativa no roleplay.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>RELAÇÃO COM CORPORAÇÕES</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Facções podem entrar em conflito com corporações, mas devem respeitar regras de combate e diretrizes de interação.</li>
+<li>Não é permitido agir com hostilidade sem razão legítima ou justificativa adequada dentro do contexto da história.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>REGRAS DE COMBATE E AÇÕES</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Facções podem realizar ações como sequestro, assaltos e operações para controle de áreas específicas, sempre dentro dos limites do roleplay.</li>
+<li>Devem respeitar áreas neutras e seguras e agir de forma coerente com suas funções.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>QUEBRA DE REGRAS E PENALIDADES</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Quebras de regras como metagaming, powergaming ou forçar RP podem resultar em penalidades.</li>
+<li>Blacklist de todas as facções por um tempo determinado (1 a 2 semanas), podendo aumentar dependendo do caso.</li>
+</ul>
+  </div>
+</div>
+  </div>
+  <div class="rules-panel" id="tab-regras-de-corporacao">
+<div class="rules">
+  <div class="rule">
+    <h4>NICKNAME DE CORPORAÇÕES</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>O nickname da corporação deve seguir o padrão relacionado ao cargo ou função do personagem.</li>
+<li>CORP|CARGO|Nick (Exemplo: Polícia|OP|Nick)</li>
+<li>CORP|Nick (quando o personagem estiver sem fardamento da corporação)</li>
+<li>EMPREGO|ORG|Nick (exemplo: advogado)</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>ARMAS E EQUIPAMENTO</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Corporações podem portar armas, mas devem se ater à legalidade (ex.: à paisana, precisa ter porte).</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>INTERAÇÃO COM CIVIS</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Corporações devem manter postura profissional, sem abusar de poder sobre civis.</li>
+<li>Não devem interferir de forma ilegítima em ações civis sem justificativa no roleplay.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>REGRAS DE AÇÃO</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>As corporações devem atuar no cumprimento da lei ou administração de recursos na cidade (policiamento, resgates, blitz etc.).</li>
+<li>Devem respeitar limites de atuação e não usar força excessiva sem razão válida no roleplay.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>CONFLITOS COM FACÇÕES OU ASSALTANTES</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Corporações podem interagir com facções e assaltantes em combate ou abordagem, mas as ações devem ser legítimas e coerentes com o RP.</li>
+<li>Devem seguir regras de combate e agir de forma realista, sem ações injustificadas ou fora da narrativa do jogo.</li>
+</ul>
+  </div>
+  <div class="rule">
+    <h4>QUEBRAS DE REGRAS E PENALIDADES</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Quebras de regras como metagaming, powergaming e outras ações fora do RP podem resultar em punições.</li>
+<li>Rebaixamento de cargo obrigatório.</li>
+<li>Blacklist de todas as corporações por um tempo determinado (1 a 2 semanas), podendo aumentar dependendo do caso.</li>
+<li>Penalidades mais severas, conforme gravidade.</li>
+</ul>
+  </div>
+</div>
+  </div>
+  <div class="rules-panel" id="tab-teclas-e-comandos">
+<div class="rules">
+  <div class="rule">
+    <h4>TECLAS E COMANDOS</h4>
+    <p><strong>Exemplo(s):</strong></p>
+<ul>
+<li>Coloque aqui a lista rápida de comandos do servidor, binds e atalhos.</li>
+</ul>
+  </div>
+</div>
+  </div>
+</div>
+</div>
+    </section>
+
+    <section class="page" id="page-team">
+      <div class="card">
+        <h2>Equipe</h2>
+        <p class="muted">Conheça a liderança do Malibu Roleplay.</p>
+        <div class="team" id="teamCards"></div>
+      </div>
+    </section>
+
+    <section class="page" id="page-checkout">
+      <div class="grid-2">
+        <div class="card">
+          <h2>Seu Carrinho</h2>
+          <div id="cartItems" class="cart"></div>
+
+          <div class="cart-total">
+            <span>Total</span>
+            <strong id="cartTotal">R$ 0,00</strong>
+          </div>
+
+          <div class="row">
+            <button class="btn ghost" id="btnClearCart">Limpar carrinho</button>
+            <button class="btn primary" id="btnGoStore2">Adicionar mais itens</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Pagamento</h2>
+          <p class="muted small">Pagamento via <strong>Mercado Pago</strong> (PIX + cartão).</p>
+
+          <div class="divider"></div>
+
+          <label class="field">
+            <span>Nome do comprador</span>
+            <input id="buyerName" placeholder="Seu nome" />
+          </label>
+          <label class="field">
+            <span>E-mail</span>
+            <input id="buyerEmail" placeholder="seuemail@dominio.com" />
+          </label>
+
+          <button class="btn primary wide" id="btnPay">Pagar agora</button>
+
+          <div class="muted small" style="margin-top:10px">
+            Após o pagamento aprovado, abra um ticket no Discord com seu e-mail e o item comprado.
+            A entrega é feita manualmente pela staff.
+          </div>
+
+          <div class="toast" id="toast"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="muted small">© <span id="year"></span> Malibu Roleplay</span>
+  </footer>
+
+  <script src="./app.js"></script>
+
+<script>
+  (function(){
+    var wrap = document.getElementById('rulesTabs');
+    if(!wrap) return;
+    var tabs = wrap.querySelectorAll('button[data-tab]');
+    var panels = document.querySelectorAll('#page-rules .rules-panel');
+    function show(id){
+      for (var i=0;i<panels.length;i++){ panels[i].classList.remove('show'); }
+      var el = document.getElementById(id);
+      if(el) el.classList.add('show');
+      for (var j=0;j<tabs.length;j++){ tabs[j].classList.remove('active'); }
+      var btn = wrap.querySelector('button[data-tab="'+id+'"]');
+      if(btn) btn.classList.add('active');
+    }
+    for (var k=0;k<tabs.length;k++){
+      tabs[k].addEventListener('click', function(){ show(this.getAttribute('data-tab')); });
+    }
+    if(tabs.length){ show(tabs[0].getAttribute('data-tab')); }
+  })();
+</script>
+
+
+<script>
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var nav = document.getElementById('mainNav') || document.querySelector('.nav');
+    var overlay = document.getElementById('navOverlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'navOverlay';
+      overlay.className = 'nav-overlay';
+      overlay.setAttribute('aria-hidden','true');
+      document.body.appendChild(overlay);
+    }
+    if (!toggle || !nav) return;
+
+    function setOpen(open) {
+      nav.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      overlay.classList.toggle('show', open);
+      overlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+      document.body.classList.toggle('menu-open', open);
+    }
+    function isOpen() { return nav.classList.contains('open'); }
+
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(!isOpen());
+    });
+
+    overlay.addEventListener('click', function () { setOpen(false); });
+
+    nav.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('.nav-btn');
+      if (btn) setOpen(false);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!isOpen()) return;
+      if (e.target.closest && (e.target.closest('#mainNav') || e.target.closest('#navToggle'))) return;
+      setOpen(false);
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 720) setOpen(false);
+    });
+  })();
+</script>
+
+
+</body>
+</html>
